@@ -1,0 +1,20 @@
+<mat-form-field>
+  <mat-select placeholder="Size" [(ngModel)]="selectedSizeList" (selectionChange)="handleChange()" multiple>
+      <mat-option *ngFor="let size of sizeList" [value]="size">
+        {{size}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+    <mat-select placeholder="Color" [(ngModel)]="selectedColorList" (selectionChange)="handleChange()" multiple>
+        <mat-option *ngFor="let color of colorList" [value]="color">
+          {{color}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+<div id="card-container">
+  <mat-card id="card" *ngFor="let tshirt of tshirtListFiltered" id={{tshirt.id}}>
+    <mat-card-title>{{tshirt.name}}</mat-card-title>
+    <img mat-card-image src={{tshirt.picture}} />
+  </mat-card>
+</div>
