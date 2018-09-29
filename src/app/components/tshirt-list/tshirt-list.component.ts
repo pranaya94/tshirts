@@ -38,6 +38,7 @@ tshirtList: Tshirt[]
 
   ngOnInit() {
     this.tshirtService.getTshirts().subscribe(tshirtList => {
+      console.log(tshirtList)
       this.tshirtList = tshirtList
       this.tshirtListFiltered = tshirtList
       this.sizeList = this.findUnique('size',tshirtList)
