@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { Component, OnInit } from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
 @Component({
   selector: 'app-tshirt-details',
   templateUrl: './tshirt-details.component.html',
@@ -10,10 +10,9 @@ export class TshirtDetailsComponent implements OnInit {
   Id: any
 
   ngOnInit() {
-    //read parameters here
     this.route.params.subscribe(params => {
-        this.Id = params["id"];
-    });
+        this.Id = params["id"]
+    })
     console.log(this.Id)
   }
   constructor(private route: ActivatedRoute){

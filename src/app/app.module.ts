@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'; 
 import { MaterialModule } from './material';
 import { FormsModule } from '@angular/forms'
+import { NgRedux, NgReduxModule } from '@angular-redux/store';
 
 import { AppComponent } from './app.component';
 import { TshirtListComponent } from './components/tshirt-list/tshirt-list.component';
@@ -10,6 +11,7 @@ import { TshirtDetailsComponent } from './components/tshirt-details/tshirt-detai
 import { AppRoutingModule } from './app-routing.module';
 
 import { tshirtService } from './services/tshirt.service';
+import { IAppState, rootReducer, INITIAL_STATE } from './store';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,14 @@ import { tshirtService } from './services/tshirt.service';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    NgReduxModule
   ],
   providers: [tshirtService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  constructor(ngRedux: NgRedux<IAppState>) {
+    ngRedux.configureStore(rootReducer, INITIAL_STATE);
+  }
+}
