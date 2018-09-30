@@ -8,7 +8,9 @@ import {
   GET_COLOR_LIST,
   GET_SELECTED_SIZE_LIST,
   GET_SELECTED_COLOR_LIST,
-  ADD_ITEM_TO_CART } from './actions/types'
+  ADD_ITEM_TO_CART,
+  REMOVE_CART_ITEM,
+  UPDATE_CART_ITEM_QTY } from './actions/types'
 
 export interface IAppState {
   tshirtList: Tshirt[],
@@ -47,6 +49,9 @@ function findUnique(field,array){
 }
 
 export function rootReducer(state: IAppState, action): IAppState {
+    let cart
+    let cartQuantity
+    let cartPrice
     switch (action.type) {
         case GET_TSHIRT_LIST:
             return({
@@ -92,15 +97,42 @@ export function rootReducer(state: IAppState, action): IAppState {
               tshirtListFiltered
             })
         case ADD_ITEM_TO_CART:
-            let cart = state.cart.map(item => ({...item}))
+            cart = state.cart.map(item => ({...item}))
             let indexCart = cart.findIndex(item => item.id === state.selectedTshirt.id)
             if(indexCart !== -1){ //if is already in cart increase buyQuantity
               cart[indexCart].buyQuantity++
             } else {
               cart.push({...state.selectedTshirt, buyQuantity: 1})
             }             
-            let cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
-            let cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
+            cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            return({
+              ...state,
+              cart,
+              cartQuantity,
+              cartPrice
+            })
+        case REMOVE_CART_ITEM:
+            cart = state.cart.filter(item => item.id !== action.id)
+            cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
+            cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            return({
+              ...state,
+              cart,
+              cartQuantity,
+              cartPrice
+            })
+        case UPDATE_CART_ITEM_QTY:        
+            cart = state.cart.map(item => {
+              if(item.id === action.updates.id){
+                console.log({...item, buyQuantity: action.updates.qty})
+                return({...item, buyQuantity: action.updates.qty})
+              }
+              return({...item})
+            })
+            console.log('cart after ',cart)
+            cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
+            cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
             return({
               ...state,
               cart,
