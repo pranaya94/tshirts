@@ -15,7 +15,7 @@ app.use(redirectUnmatched)
 function redirectUnmatched(req,res){                                                                                                                                  
   res.redirect('/')                                                                                                                                                 
 }     
-const server = app.listen(process.env.PORT || app.get('port'), () => {
+const server = app.listen(app.get('port'), () => {
   const port = server.address().port
 	console.log("Listening on port " + port)
 })  
