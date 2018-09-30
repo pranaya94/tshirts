@@ -6,6 +6,7 @@
       <mat-list>
         <mat-list-item  *ngFor="let key of tshirtKeys"> {{key}} : {{selectedTshirt[key]}} </mat-list-item>
       </mat-list>
+      <button mat-raised-button color="accent" (click)="handleBuyClick()">Buy Now</button>
     </mat-card-content>
   </mat-card>
 </div>

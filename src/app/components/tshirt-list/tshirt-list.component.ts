@@ -35,6 +35,7 @@ export class TshirtListComponent implements OnInit {
   }
 
   ngOnInit() {
+    /* Subscriptions */
     this.tshirtList$.subscribe(tshirtList => this.tshirtList = tshirtList)
     this.tshirtListFiltered$.subscribe(tshirtListFiltered => this.tshirtListFiltered = tshirtListFiltered)
     this.sizeList$.subscribe(sizeList => this.sizeList = sizeList)
@@ -44,9 +45,9 @@ export class TshirtListComponent implements OnInit {
 
     this.tshirtService.getTshirts().subscribe(tshirtList => {
       this.ngRedux.dispatch({type: GET_TSHIRT_LIST, tshirtList})
-      this.ngRedux.dispatch({type: FILTER_TSHIRT_LIST, tshirtList})
       this.ngRedux.dispatch({type: GET_SIZE_LIST, tshirtList})
       this.ngRedux.dispatch({type: GET_COLOR_LIST, tshirtList})
+      this.ngRedux.dispatch({type: FILTER_TSHIRT_LIST, tshirtList})
     })
   }
 }

@@ -1,5 +1,14 @@
 import { Tshirt } from './models/tshirt'
-import { SELECT_TSHIRT, GET_TSHIRT_LIST, FILTER_TSHIRT_LIST, GET_SIZE_LIST, GET_COLOR_LIST, GET_SELECTED_SIZE_LIST, GET_SELECTED_COLOR_LIST } from './actions/types'
+import { Cart } from './models/cart'
+import { 
+  SELECT_TSHIRT,
+  GET_TSHIRT_LIST,
+  FILTER_TSHIRT_LIST,
+  GET_SIZE_LIST,
+  GET_COLOR_LIST,
+  GET_SELECTED_SIZE_LIST,
+  GET_SELECTED_COLOR_LIST,
+  ADD_ITEM_TO_CART } from './actions/types'
 
 export interface IAppState {
   tshirtList: Tshirt[],
@@ -8,7 +17,8 @@ export interface IAppState {
   colorList: String[],
   selectedSizeList: String[],
   selectedColorList: String[],
-  selectedTshirt: Tshirt
+  selectedTshirt: Tshirt,
+  cart: Cart[]
 }
 
 export const INITIAL_STATE: IAppState = {
@@ -18,7 +28,8 @@ export const INITIAL_STATE: IAppState = {
   colorList: [],
   selectedSizeList: [],
   selectedColorList: [],
-  selectedTshirt: null
+  selectedTshirt: null,
+  cart: []
 }
 
 function findUnique(field,array){
@@ -75,6 +86,18 @@ export function rootReducer(state: IAppState, action): IAppState {
             return({
               ...state,
               tshirtListFiltered
+            })
+        case ADD_ITEM_TO_CART:
+            let cart = state.cart.map(item => ({...item}))
+            let indexCart = cart.findIndex(item => item.id === state.selectedTshirt.id)
+            if(indexCart !== -1){ //if is already in cart increase buyQuantity
+              cart[indexCart].buyQuantity++
+            } else {
+              cart.push({...state.selectedTshirt, buyQuantity: 1})
+            }            
+            return({
+              ...state,
+              cart
             })
         default : return state
     }
