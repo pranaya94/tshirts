@@ -6,8 +6,8 @@ import { TshirtListComponent } from './components/tshirt-list/tshirt-list.compon
 import { TshirtDetailsComponent } from './components/tshirt-details/tshirt-details.component';
 
 const routes: Routes = [
-  {path : 'tshirts', component: TshirtListComponent},
-  {path : 'tshirts/:id', component: TshirtDetailsComponent}
+  {path : '', component: TshirtListComponent},
+  {path : ':id', component: TshirtDetailsComponent}
 ];
 
 @NgModule({

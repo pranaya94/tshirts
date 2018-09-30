@@ -33,9 +33,9 @@ export const INITIAL_STATE: IAppState = {
   selectedSizeList: [],
   selectedColorList: [],
   selectedTshirt: null,
-  cart: [],
-  cartQuantity: 0,
-  cartPrice: 0
+  cart: JSON.parse(localStorage.getItem('cart')) || [],
+  cartQuantity: Number(localStorage.getItem('cartQuantity')) || 0,
+  cartPrice: Number(localStorage.getItem('cartPrice')) || 0
 }
 
 function findUnique(field,array){
@@ -106,6 +106,9 @@ export function rootReducer(state: IAppState, action): IAppState {
             }             
             cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
             cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            localStorage.setItem('cart',JSON.stringify(cart))
+            localStorage.setItem('cartQuantity',cartQuantity)
+            localStorage.setItem('cartPrice',cartPrice)
             return({
               ...state,
               cart,
@@ -116,6 +119,9 @@ export function rootReducer(state: IAppState, action): IAppState {
             cart = state.cart.filter(item => item.id !== action.id)
             cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
             cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            localStorage.setItem('cart',JSON.stringify(cart))
+            localStorage.setItem('cartQuantity',cartQuantity)
+            localStorage.setItem('cartPrice',cartPrice)
             return({
               ...state,
               cart,
@@ -133,6 +139,9 @@ export function rootReducer(state: IAppState, action): IAppState {
             console.log('cart after ',cart)
             cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
             cartPrice = cart.reduce((acc,item) => acc + Number(item.price)*item.buyQuantity,0)
+            localStorage.setItem('cart',JSON.stringify(cart))
+            localStorage.setItem('cartQuantity',cartQuantity)
+            localStorage.setItem('cartPrice',cartPrice)
             return({
               ...state,
               cart,
