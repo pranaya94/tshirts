@@ -8,7 +8,8 @@ import {
   GET_COLOR_LIST,
   GET_SELECTED_SIZE_LIST,
   GET_SELECTED_COLOR_LIST,
-  ADD_ITEM_TO_CART } from './actions/types'
+  ADD_ITEM_TO_CART,
+  GET_CART_QUANTITY } from './actions/types'
 
 export interface IAppState {
   tshirtList: Tshirt[],
@@ -18,7 +19,8 @@ export interface IAppState {
   selectedSizeList: String[],
   selectedColorList: String[],
   selectedTshirt: Tshirt,
-  cart: Cart[]
+  cart: Cart[],
+  cartQuantity: number
 }
 
 export const INITIAL_STATE: IAppState = {
@@ -29,7 +31,8 @@ export const INITIAL_STATE: IAppState = {
   selectedSizeList: [],
   selectedColorList: [],
   selectedTshirt: null,
-  cart: []
+  cart: [],
+  cartQuantity: 0
 }
 
 function findUnique(field,array){
@@ -94,11 +97,14 @@ export function rootReducer(state: IAppState, action): IAppState {
               cart[indexCart].buyQuantity++
             } else {
               cart.push({...state.selectedTshirt, buyQuantity: 1})
-            }            
+            }             
+            let cartQuantity = cart.reduce((acc,item) => acc + item.buyQuantity,0)
             return({
               ...state,
-              cart
+              cart,
+              cartQuantity
             })
+
         default : return state
     }
 }

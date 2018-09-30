@@ -12,12 +12,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { tshirtService } from './services/tshirt.service';
 import { IAppState, rootReducer, INITIAL_STATE } from './store';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TshirtListComponent,
-    TshirtDetailsComponent
+    TshirtDetailsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
