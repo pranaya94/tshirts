@@ -13,13 +13,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { tshirtService } from './services/tshirt.service';
 import { IAppState, rootReducer, INITIAL_STATE } from './store';
 import { CartComponent } from './components/cart/cart.component';
+import { CartDialogComponent } from './components/cart-dialog/cart-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TshirtListComponent,
     TshirtDetailsComponent,
-    CartComponent
+    CartComponent,
+    CartDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,9 @@ import { CartComponent } from './components/cart/cart.component';
     MaterialModule,
     FormsModule,
     NgReduxModule
+  ],
+  entryComponents: [
+    CartDialogComponent
   ],
   providers: [tshirtService],
   bootstrap: [AppComponent]

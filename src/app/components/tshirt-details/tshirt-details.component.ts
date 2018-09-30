@@ -15,7 +15,7 @@ import { isNgTemplate } from '@angular/compiler';
 })
 export class TshirtDetailsComponent implements OnInit {
 
-  id: Number
+  id: number
   @select() selectedTshirt$: Observable<Tshirt>
   selectedTshirt: Tshirt
   @select() cart$: Observable<Cart[]>
