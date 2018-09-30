@@ -1,3 +1,11 @@
-<p>
-  tshirt-details works!
-</p>
+<div id="card-container">
+  <mat-card id="card" id={{selectedTshirt.id}}>
+    <mat-card-title>{{selectedTshirt.name}}</mat-card-title>
+    <img mat-card-image src={{selectedTshirt.picture}}/>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item  *ngFor="let key of tshirtKeys"> {{key}} : {{selectedTshirt[key]}} </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

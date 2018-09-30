@@ -1,4 +1,3 @@
-
 import { Tshirt } from './models/tshirt'
 import { SELECT_TSHIRT, GET_TSHIRT_LIST, FILTER_TSHIRT_LIST, GET_SIZE_LIST, GET_COLOR_LIST, GET_SELECTED_SIZE_LIST, GET_SELECTED_COLOR_LIST } from './actions/types'
 
@@ -41,9 +40,10 @@ export function rootReducer(state: IAppState, action): IAppState {
               tshirtListFiltered: action.tshirtList
             })
         case SELECT_TSHIRT:
+            let index = state.tshirtList.findIndex(tshirt => tshirt.id === Number(action.id))
             return({
               ...state,
-              selectedTshirt: action.tshirt
+              selectedTshirt: state.tshirtList[index]
             })
         case GET_SIZE_LIST:
             return({
