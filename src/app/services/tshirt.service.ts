@@ -8,7 +8,7 @@ import { Tshirt } from '../models/tshirt';
 })
 export class tshirtService {
 
-  tshirtURL = "http://localhost:4000/tshirts"
+  tshirtURL = "/tshirts"
   constructor(private http: HttpClient) { }
 
   getTshirts(): Observable<Tshirt[]>{
