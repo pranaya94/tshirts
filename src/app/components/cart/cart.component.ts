@@ -27,12 +27,10 @@ export class CartComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(CartDialogComponent, {
-      // width: '250px',
       data: {}
     })
 
     dialogRef.afterClosed().subscribe(result => {
-      // this.animal = result
     })
   }
 

@@ -1,27 +1,45 @@
-# Tshirts
+# Tshirts App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
+A place to buy respectable looking Tshirts.
 
-## Development server
+## Getting Started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Code scaffolding
+### Installation Scripts
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run the following from the project root.
 
-## Build
+* Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+npm run build
+```
 
-## Running unit tests
+* Run
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+npm start
+```
 
-## Running end-to-end tests
+The last command starts an http server and serves the app bundle as well as API endpoints to fetch the Tshirt data.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Running the tests
 
-## Further help
+A unit test for the store reducer function has been provided. It is by no means exhaustive.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Unit Test
+
+The below command will start the test runner.
+
+```
+ng test
+```
+
+## Deployment
+
+The app has been deployed on Heroku and may be accessed [here](https://tshirtseverywhere.herokuapp.com/)
+
+## Author
+
+* **Pranaya Tomar**
