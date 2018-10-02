@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core'
 import { NgRedux, select } from '@angular-redux/store'
 import { Observable } from 'rxjs'
 import { IAppState } from '../../store'
-import { GET_TSHIRT_LIST, FILTER_TSHIRT_LIST, GET_SIZE_LIST, GET_COLOR_LIST, GET_SELECTED_SIZE_LIST, GET_SELECTED_COLOR_LIST } from '../../actions/types'
+import { 
+  GET_TSHIRT_LIST,
+  FILTER_TSHIRT_LIST,
+  GET_SIZE_LIST,
+  GET_COLOR_LIST,
+  GET_SELECTED_SIZE_LIST,
+  GET_SELECTED_COLOR_LIST 
+} from '../../actions/types'
 import { tshirtService } from '../../services/tshirt.service'
 import { Tshirt } from '../../models/tshirt'
 
