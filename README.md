@@ -2,11 +2,9 @@
 
 A place to buy respectable looking Tshirts.
 
-## Getting Started
+## Installation
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-### Installation Scripts
 
 Run the following from the project root.
 
@@ -23,6 +21,7 @@ npm start
 ```
 
 The last command starts an http server and serves the app bundle as well as API endpoints to fetch the Tshirt data.
+The app will be served on ```localhost:3000```
 
 ## Running the tests
 

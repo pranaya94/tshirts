@@ -26,12 +26,7 @@ export class CartComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CartDialogComponent, {
-      data: {}
-    })
-
-    dialogRef.afterClosed().subscribe(result => {
-    })
+    const dialogRef = this.dialog.open(CartDialogComponent, {})
   }
 
 }
