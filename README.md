@@ -37,7 +37,7 @@ ng test
 
 ## Deployment
 
-The app has been deployed on Heroku and may be accessed [here](https://tshirtseverywhere.herokuapp.com/)
+The app has been deployed on Heroku and may be accessed at <https://tshirtseverywhere.herokuapp.com/>
 
 ## Author
 
